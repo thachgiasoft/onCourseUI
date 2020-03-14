@@ -109,10 +109,11 @@
 		EA00A5DB24072B1300F344C2 /* onCourseUI */ = {
 			isa = PBXGroup;
 			children = (
+				EA00A5DC24072B1300F344C2 /* AppDelegate.swift */,
+				EA00A5DE24072B1300F344C2 /* SceneDelegate.swift */,
 				EA00A61524072CF800F344C2 /* Models */,
 				EA00A61024072C0700F344C2 /* CourseList */,
 				EABAD59D24073A940016F249 /* CourseDetail */,
-				EA00A60F24072BEC00F344C2 /* Delegates */,
 				EA00A5EA24072B1400F344C2 /* LaunchScreen.storyboard */,
 				EA00A5ED24072B1400F344C2 /* Info.plist */,
 				EA00A5E024072B1300F344C2 /* onCourseUI.xcdatamodeld */,
@@ -146,15 +147,6 @@
 				EA00A60324072B1400F344C2 /* Info.plist */,
 			);
 			path = onCourseUIUITests;
-			sourceTree = "<group>";
-		};
-		EA00A60F24072BEC00F344C2 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				EA00A5DC24072B1300F344C2 /* AppDelegate.swift */,
-				EA00A5DE24072B1300F344C2 /* SceneDelegate.swift */,
-			);
-			path = Delegates;
 			sourceTree = "<group>";
 		};
 		EA00A61024072C0700F344C2 /* CourseList */ = {
