@@ -6,8 +6,8 @@
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="section" optional="YES" attributeType="String"/>
-        <attribute name="teacher" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
+        <relationship name="teacher" optional="YES" toMany="YES" minCount="1" maxCount="4" deletionRule="Nullify" destinationEntity="Teacher"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
