@@ -16,10 +16,10 @@
 		EA00A5EC24072B1400F344C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA00A5EA24072B1400F344C2 /* LaunchScreen.storyboard */; };
 		EA00A5F724072B1400F344C2 /* onCourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A5F624072B1400F344C2 /* onCourseUITests.swift */; };
 		EA00A60224072B1400F344C2 /* onCourseUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A60124072B1400F344C2 /* onCourseUIUITests.swift */; };
-		EA00A61424072CD300F344C2 /* CoursePreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A61324072CD300F344C2 /* CoursePreviewRow.swift */; };
 		EA00A61724072D1C00F344C2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A61624072D1C00F344C2 /* Course.swift */; };
-		EA92375724076743001660F7 /* CourseDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92375624076743001660F7 /* CourseDetailRow.swift */; };
-		EABAD59F24073AB90016F249 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAD59E24073AB90016F249 /* CourseDetailView.swift */; };
+		EA034FBD241C8F9700FF7EA2 /* CoursePreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A61324072CD300F344C2 /* CoursePreviewRow.swift */; };
+		EA034FBE241C91E400FF7EA2 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAD59E24073AB90016F249 /* CourseDetailView.swift */; };
+		EA034FBF241C920900FF7EA2 /* CourseDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92375624076743001660F7 /* CourseDetailRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -306,12 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA034FBD241C8F9700FF7EA2 /* CoursePreviewRow.swift in Sources */,
 				EA00A61724072D1C00F344C2 /* Course.swift in Sources */,
-				EA00A61424072CD300F344C2 /* CoursePreviewRow.swift in Sources */,
 				EA00A5DD24072B1300F344C2 /* AppDelegate.swift in Sources */,
 				EA00A5E224072B1300F344C2 /* onCourseUI.xcdatamodeld in Sources */,
-				EA92375724076743001660F7 /* CourseDetailRow.swift in Sources */,
-				EABAD59F24073AB90016F249 /* CourseDetailView.swift in Sources */,
+				EA034FBF241C920900FF7EA2 /* CourseDetailRow.swift in Sources */,
+				EA034FBE241C91E400FF7EA2 /* CourseDetailView.swift in Sources */,
 				EA00A5E424072B1300F344C2 /* CourseList.swift in Sources */,
 				EA00A5DF24072B1300F344C2 /* SceneDelegate.swift in Sources */,
 			);

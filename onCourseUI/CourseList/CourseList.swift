@@ -9,21 +9,16 @@
 import SwiftUI
 
 struct CourseList: View {
+    @FetchRequest(entity: Course.entity(), sortDescriptors:[]) var courses: FetchedResults<Course>
+//    @Environment(\.managedObjectContext) var context
+    
     var body: some View {
         
         NavigationView {
-            
-            List(courses) { course in
                 
-                NavigationLink(destination: CourseDetailView(course: course)
-                    .navigationBarTitle(Text(course.name), displayMode: .automatic)) {
-                        
+                ForEach(testCourses, id: \.name) { course in
                     CoursePreviewRow(course: course)
-                    
                 }
-            }
-                
-            .navigationBarTitle("Courses")
         }
     }
 }

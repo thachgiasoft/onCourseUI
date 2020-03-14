@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CourseDetailView: View {
     
-    var course: Course
+    var course: testCourse
     
     enum DetailTypes {
         static let name = "Name"
@@ -44,8 +45,8 @@ struct CourseDetailView: View {
     }
 }
 
-struct CourseDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CourseDetailView(course: courses[0])
-    }
-}
+//struct CourseDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CourseDetailView(course: testCourses[0])
+//    }
+//}

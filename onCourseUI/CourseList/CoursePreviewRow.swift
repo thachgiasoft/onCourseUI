@@ -7,9 +7,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CoursePreviewRow: View {
-    var course: Course
+    var course: testCourse
     
     var body: some View {
         VStack {
@@ -32,13 +33,15 @@ struct CoursePreviewRow: View {
     }
 }
 
-struct CoursePreviewRow_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        Group {
-            CoursePreviewRow(course: courses[0])
-            CoursePreviewRow(course: courses[1])
-        }.previewLayout(.sizeThatFits)
-        
-    }
-}
+//struct CoursePreviewRow_Previews: PreviewProvider {
+//    let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//
+//        Group {
+//            CoursePreviewRow(course: courses[0])
+//            CoursePreviewRow(course: courses[1])
+//        }.previewLayout(.sizeThatFits)
+//
+//    }
+//}

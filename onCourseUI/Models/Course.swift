@@ -9,23 +9,23 @@
 import Foundation
 
 
-struct Course: Identifiable {
+struct testCourse: Identifiable {
     var id  = UUID()
-    
-    
+
+
     var name: String
     var code: String
     var location: String
     var credits: Int
-    
-    
+
+
 }
 
-let courses: [Course] = [
+let testCourses: [testCourse] = [
 
-Course(name: "Biology I", code: "BIO 1000", location: "Old Main", credits: 4),
-Course(name: "Intro to SE", code: "CSE 3724", location: "Butler 100", credits: 3),
-Course(name: "Economics I", code: "ECO 1000", location: "McCain", credits: 3),
-Course(name: "Horseback Riding", code: "Rid 2123", location: "Outside", credits: 3),
+testCourse(name: "Biology I", code: "BIO 1000", location: "Old Main", credits: 4),
+testCourse(name: "Intro to SE", code: "CSE 3724", location: "Butler 100", credits: 3),
+testCourse(name: "Economics I", code: "ECO 1000", location: "McCain", credits: 3),
+testCourse(name: "Horseback Riding", code: "Rid 2123", location: "Outside", credits: 3),
 
 ]
