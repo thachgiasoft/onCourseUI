@@ -19,6 +19,7 @@
 		EA00A61724072D1C00F344C2 /* testCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A61624072D1C00F344C2 /* testCourse.swift */; };
 		EAA224432422EF9500B944B6 /* CoursePreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00A61324072CD300F344C2 /* CoursePreviewRow.swift */; };
 		EAA224462423024C00B944B6 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA224452423024C00B944B6 /* AddCourseView.swift */; };
+		EAA2244824230A1A00B944B6 /* PromptRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA2244724230A1A00B944B6 /* PromptRow.swift */; };
 		EAC7F2DB2422ABE200B16FBA /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7F2DA2422ABE200B16FBA /* Course.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		EA00A61624072D1C00F344C2 /* testCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCourse.swift; sourceTree = "<group>"; };
 		EA92375624076743001660F7 /* CourseDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailRow.swift; sourceTree = "<group>"; };
 		EAA224452423024C00B944B6 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
+		EAA2244724230A1A00B944B6 /* PromptRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptRow.swift; sourceTree = "<group>"; };
 		EABAD59E24073AB90016F249 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		EAC7F2DA2422ABE200B16FBA /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA224452423024C00B944B6 /* AddCourseView.swift */,
+				EAA2244724230A1A00B944B6 /* PromptRow.swift */,
 			);
 			path = AddCourse;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				EAC7F2DB2422ABE200B16FBA /* Course.swift in Sources */,
 				EA00A61724072D1C00F344C2 /* testCourse.swift in Sources */,
 				EAA224432422EF9500B944B6 /* CoursePreviewRow.swift in Sources */,
+				EAA2244824230A1A00B944B6 /* PromptRow.swift in Sources */,
 				EAA224462423024C00B944B6 /* AddCourseView.swift in Sources */,
 				EA00A5DD24072B1300F344C2 /* AppDelegate.swift in Sources */,
 				EA00A5E224072B1300F344C2 /* onCourseUI.xcdatamodeld in Sources */,
