@@ -6,25 +6,44 @@
 //  Copyright © 2020 Nikhil Menon. All rights reserved.
 //
 
+/// Reference for CoreData Use: https://github.com/andrewcbancroft/BlogIdeaList-SwiftUI/blob/master/BlogIdeaList-SwiftUI/ContentView.swift
 import SwiftUI
+import Foundation
 
 struct CourseList: View {
-    @FetchRequest(entity: Course.entity(), sortDescriptors:[]) var courses: FetchedResults<Course>
-//    @Environment(\.managedObjectContext) var context
+    
+    // Core Data Property Wrappers
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(fetchRequest: Course.retrieveCourses()) var courses: FetchedResults<Course>
+    
+    @State private var noCourses: Bool = true
+    
+    var test: [String] = []
     
     var body: some View {
         
         NavigationView {
+            
+            // Courses exist and should be shown
+            List {
                 
-                ForEach(testCourses, id: \.name) { course in
-                    CoursePreviewRow(course: course)
+                ForEach(courses) { course in
+                    
+                    CoursePreviewRow(name: course.name ?? "",
+                                     code: course.code ?? "",
+                                     credits: 0)
+                    
                 }
+                .navigationBarTitle(Text("Courses"), displayMode: .automatic)
+            }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CourseList()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//
+//        CourseList(courses: <#T##FetchedResults<Course>#>)
+//    }
+//}
