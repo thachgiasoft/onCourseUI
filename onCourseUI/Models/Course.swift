@@ -16,7 +16,6 @@ public class Course: NSManagedObject, Identifiable {
     @NSManaged public var credits: NSNumber?
     @NSManaged public var location: String?
     @NSManaged public var name: String?
-    @NSManaged public var section: String?
     @NSManaged public var time: String?
     
 }

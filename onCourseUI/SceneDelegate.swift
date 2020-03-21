@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let cv = CourseList().environment(\.managedObjectContext, managedObjectContext)
             let cv2 = AddCourseView()
             
-            window.rootViewController = UIHostingController(rootView: cv2)
+            window.rootViewController = UIHostingController(rootView: cv)
             self.window = window
             window.makeKeyAndVisible()
         }

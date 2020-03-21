@@ -5,7 +5,6 @@
         <attribute name="credits" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES" codeGenerationType="class">
@@ -15,7 +14,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Course" positionX="-76.4140625" positionY="-15.5" width="128" height="133"/>
+        <element name="Course" positionX="-76.4140625" positionY="-15.5" width="128" height="118"/>
         <element name="Teacher" positionX="120.32421875" positionY="-6.37890625" width="128" height="103"/>
     </elements>
 </model>

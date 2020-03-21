@@ -16,9 +16,23 @@ struct CourseList: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: Course.retrieveCourses()) var courses: FetchedResults<Course>
     
-    @State private var noCourses: Bool = true
     
-    var test: [String] = []
+    /// Turns true if CoreData is empty or if user taps add Course Button
+    @State var showAddCourse: Bool = false
+    
+    
+    /// Toggles showAddCourse State variable
+    var addCourseButton: some View {
+        Button(action: {
+            self.showAddCourse.toggle()
+        }) {
+            Image(systemName: "plus.circle.fill")
+                .imageScale(.large)
+                .accessibility(label: Text("Add Course"))
+                .padding()
+        }
+    }
+    
     
     var body: some View {
         
@@ -35,7 +49,17 @@ struct CourseList: View {
                     
                 }
                 .navigationBarTitle(Text("Courses"), displayMode: .automatic)
+                .navigationBarItems(trailing: addCourseButton)
+                .sheet(isPresented: $showAddCourse) {
+                    NavigationView {
+                        AddCourseView()
+                        .navigationBarTitle("Add Course")
+                    }
+                    
+                }
             }
+            
+            
         }
     }
 }
@@ -43,7 +67,7 @@ struct CourseList: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //
+//        CourseList(managedObjectContext: <#T##Environment<NSManagedObjectContext>#>, courses: <#T##FetchRequest<Course>#>, showAddCourse: <#T##Bool#>)
 //
-//        CourseList(courses: <#T##FetchedResults<Course>#>)
 //    }
 //}

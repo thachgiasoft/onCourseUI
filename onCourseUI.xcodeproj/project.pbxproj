@@ -117,7 +117,7 @@
 				EA00A5DE24072B1300F344C2 /* SceneDelegate.swift */,
 				EA00A61524072CF800F344C2 /* Models */,
 				EAA224442423020B00B944B6 /* AddCourse */,
-				EA00A61024072C0700F344C2 /* CourseList */,
+				EA00A61024072C0700F344C2 /* CourseList (Home) */,
 				EABAD59D24073A940016F249 /* CourseDetail */,
 				EA00A5EA24072B1400F344C2 /* LaunchScreen.storyboard */,
 				EA00A5ED24072B1400F344C2 /* Info.plist */,
@@ -154,13 +154,13 @@
 			path = onCourseUIUITests;
 			sourceTree = "<group>";
 		};
-		EA00A61024072C0700F344C2 /* CourseList */ = {
+		EA00A61024072C0700F344C2 /* CourseList (Home) */ = {
 			isa = PBXGroup;
 			children = (
 				EA00A5E324072B1300F344C2 /* CourseList.swift */,
 				EA00A61324072CD300F344C2 /* CoursePreviewRow.swift */,
 			);
-			path = CourseList;
+			path = "CourseList (Home)";
 			sourceTree = "<group>";
 		};
 		EA00A61524072CF800F344C2 /* Models */ = {

@@ -21,6 +21,7 @@ struct PromptRow: View {
                 .fontWeight(.semibold)
                 .padding(.leading)
             TextField(placeholder, text: text)
+                .padding(.bottom)
         }
         
         
