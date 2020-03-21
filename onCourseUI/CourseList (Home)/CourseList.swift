@@ -52,7 +52,7 @@ struct CourseList: View {
                 .navigationBarItems(trailing: addCourseButton)
                 .sheet(isPresented: $showAddCourse) {
                     NavigationView {
-                        AddCourseView()
+                        AddCourseView(showAddCourse: self.$showAddCourse)
                         .navigationBarTitle("Add Course")
                     }
                     

@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Passing the MOC to a new CourseList View
             let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let cv = CourseList().environment(\.managedObjectContext, managedObjectContext)
-            let cv2 = AddCourseView()
             
             window.rootViewController = UIHostingController(rootView: cv)
             self.window = window

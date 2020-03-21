@@ -38,16 +38,9 @@ class AddCourseViewModel: ObservableObject {
 
 struct AddCourseView: View {
     
-    @State private var name: String = ""
-    @State private var code: String = ""
-    @State private var credits: String = ""
-    
-    @State private var section: String = ""
-    @State private var location: String = ""
-    @State private var time: String = ""
-    
     @ObservedObject var addCourseVM = AddCourseViewModel()
-    
+//    @Environment(\.managedObjectContext) var managedObjectContext
+    @Binding var showAddCourse: Bool
     
     var body: some View {
         
@@ -66,6 +59,8 @@ struct AddCourseView: View {
                 
                 Button(action: {
                     // Do stuff
+                    self.showAddCourse.toggle()
+                    
                 }) {
                     // Button Layout
                     Text("Add Course")
@@ -85,8 +80,8 @@ struct AddCourseView: View {
     }
 }
 
-struct AddCourseView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddCourseView()
-    }
-}
+//struct AddCourseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddCourseView()
+//    }
+//}
