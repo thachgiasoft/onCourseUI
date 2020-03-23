@@ -43,9 +43,13 @@ struct CourseList: View {
             List {
                 
                 ForEach(courses) { course in
-                    CoursePreviewRow(name: course.name ?? "",
-                                     code: course.code ?? "",
-                                     credits: 0)
+                    
+                    NavigationLink(destination: CourseDetailView(viewModel: CourseDetailViewModel(course: course))) {
+                        
+                        CoursePreviewRow(name: course.name ?? "",
+                        code: course.code ?? "",
+                        credits: 0)
+                    }
                 }
             }
             .navigationBarTitle(Text("Courses"), displayMode: .automatic)

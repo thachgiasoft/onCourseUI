@@ -10,11 +10,11 @@ import SwiftUI
 
 class AddCourseViewModel: ObservableObject {
     
-    public var name: String = ""
-    public var code: String = ""
-    public var credits: String = ""
-    public var location: String = ""
-    public var time: String = ""
+    @Published public var name: String = ""
+    @Published public var code: String = ""
+    @Published public var credits: String = ""
+    @Published public var location: String = ""
+    @Published public var time: String = ""
     
     enum Titles {
         static let name = "Course Name"
@@ -38,7 +38,7 @@ class AddCourseViewModel: ObservableObject {
 
 struct AddCourseView: View {
     
-    @ObservedObject var addCourseVM = AddCourseViewModel()
+    @ObservedObject var viewModel = AddCourseViewModel()
     @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var showAddCourse: Bool // Binds the state from parent view to this view.
     
@@ -47,29 +47,29 @@ struct AddCourseView: View {
         
             
             VStack {
-                PromptRow(title: AddCourseViewModel.Titles.name, placeholder: AddCourseViewModel.Placeholders.name, text: $addCourseVM.name)
+                PromptRow(title: AddCourseViewModel.Titles.name, placeholder: AddCourseViewModel.Placeholders.name, text: $viewModel.name)
                     .padding(.top)
-                PromptRow(title: AddCourseViewModel.Titles.code, placeholder: AddCourseViewModel.Placeholders.code, text: $addCourseVM.code)
+                PromptRow(title: AddCourseViewModel.Titles.code, placeholder: AddCourseViewModel.Placeholders.code, text: $viewModel.code)
                 
-                PromptRow(title: AddCourseViewModel.Titles.credits, placeholder: AddCourseViewModel.Placeholders.credits, text: $addCourseVM.credits)
+                PromptRow(title: AddCourseViewModel.Titles.credits, placeholder: AddCourseViewModel.Placeholders.credits, text: $viewModel.credits)
                 
-                PromptRow(title: AddCourseViewModel.Titles.location, placeholder: AddCourseViewModel.Placeholders.location, text: $addCourseVM.location)
-                PromptRow(title: AddCourseViewModel.Titles.time, placeholder: AddCourseViewModel.Placeholders.time, text: $addCourseVM.time)
+                PromptRow(title: AddCourseViewModel.Titles.location, placeholder: AddCourseViewModel.Placeholders.location, text: $viewModel.location)
+                PromptRow(title: AddCourseViewModel.Titles.time, placeholder: AddCourseViewModel.Placeholders.time, text: $viewModel.time)
                     .padding(.bottom)
                 
                 Button(action: {
                     // Do stuff
                     
                     let course = Course(context: self.managedObjectContext)
-                    course.name = self.addCourseVM.name
-                    course.code = self.addCourseVM.code
+                    course.name = self.viewModel.name
+                    course.code = self.viewModel.code
 
-                    if let credits = Int(self.addCourseVM.credits) {
+                    if let credits = Int(self.viewModel.credits) {
                         course.credits = NSNumber(integerLiteral: credits)
                     }
 
-                    course.location = self.addCourseVM.location
-                    course.time = self.addCourseVM.time
+                    course.location = self.viewModel.location
+                    course.time = self.viewModel.time
                     
                     do {
                         try self.managedObjectContext.save()
@@ -101,6 +101,6 @@ struct AddCourseView: View {
 struct AddCourseView_Previews: PreviewProvider {
     static var previews: some View {
         
-        AddCourseView(addCourseVM: AddCourseViewModel(), managedObjectContext: .init(\.managedObjectContext), showAddCourse: Binding.constant(true))
+        AddCourseView(viewModel: AddCourseViewModel(), managedObjectContext: .init(\.managedObjectContext), showAddCourse: Binding.constant(true))
     }
 }

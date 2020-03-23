@@ -43,20 +43,19 @@ struct CourseDetailRow: View {
     }
 }
 
-//struct CourseDetailRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let courses: []
-//
-//        Group {
-//         CourseDetailRow(
-//            DetailType: "Name",
-//            value: courses[0].code)
-//
-//            CourseDetailRow(
-//            DetailType: "Location",
-//            value: courses[0].location)
-//
-//        }.previewLayout(.sizeThatFits)
-//
-//    }
-//}
+struct CourseDetailRow_Previews: PreviewProvider {
+    static var previews: some View {
+
+        Group {
+         CourseDetailRow(
+            DetailType: "Name",
+            value: "TestValue")
+
+            CourseDetailRow(
+            DetailType: "Location",
+            value: "Test Place")
+
+        }.previewLayout(.sizeThatFits)
+
+    }
+}

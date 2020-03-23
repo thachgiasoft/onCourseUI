@@ -9,44 +9,78 @@
 import SwiftUI
 import CoreData
 
-struct CourseDetailView: View {
+
+class CourseDetailViewModel: ObservableObject {
     
-    var course: testCourse
+    @Published public var detailTitle: DetailType!
     
-    enum DetailTypes {
-        static let name = "Name"
-        static let code = "Code"
-        static let credits = "Credits"
-        static let teacher = "Teacher"
-        static let location = "Location"
+    @Published var name: String!
+    @Published var code: String!
+    @Published var credits: String!
+    @Published var location: String!
+    @Published var time: String!
+    
+    
+    enum DetailType: String {
+        case Name = "Name"
+        case Code = "Code"
+        case Credits = "Credit Hours"
+        case Location = "Location"
+        case Time = "Time"
     }
     
+    init(course: Course) {
+        self.name = course.name
+        self.code = course.code
+        
+        if let credits = course.credits {
+            self.credits = String(Int(truncating:credits))
+        } else {
+            self.credits = "N/A"
+        }
+        
+        self.location = course.location
+        self.time = course.time
+        
+    }
+}
+
+
+
+struct CourseDetailView: View {
+    
+    var viewModel: CourseDetailViewModel
+    typealias detailType = CourseDetailViewModel.DetailType
     
     var body: some View {
+        // TODO: Handle Forced Unwraps
         
             List {
              
                 CourseDetailRow(
-                    DetailType: DetailTypes.code,
-                    value: course.code)
+                    DetailType: detailType.Code.rawValue,
+                    value: viewModel.code)
                 
                 CourseDetailRow(
-                    DetailType: DetailTypes.location,
-                    value: course.location)
+                    DetailType: detailType.Location.rawValue,
+                    value: viewModel.location)
                 
                 CourseDetailRow(
-                    DetailType: DetailTypes.credits,
-                    value: String(course.credits))
+                    DetailType: detailType.Credits.rawValue,
+                    value: viewModel.credits)
                 
             }
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
-        
+            .navigationBarTitle(viewModel.name)
     }
 }
 
 //struct CourseDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
-////        CourseDetailView(course: testCourses[0])
+//
+//        let VM = CourseDetailViewModel(course: Course())
+//        CourseDetailView(viewModel: VM)
+//
 //    }
 //}
