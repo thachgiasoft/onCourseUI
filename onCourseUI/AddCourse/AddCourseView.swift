@@ -39,8 +39,8 @@ class AddCourseViewModel: ObservableObject {
 struct AddCourseView: View {
     
     @ObservedObject var addCourseVM = AddCourseViewModel()
-//    @Environment(\.managedObjectContext) var managedObjectContext
-    @Binding var showAddCourse: Bool
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Binding var showAddCourse: Bool // Binds the state from parent view to this view.
     
     var body: some View {
         
@@ -59,7 +59,25 @@ struct AddCourseView: View {
                 
                 Button(action: {
                     // Do stuff
-                    self.showAddCourse.toggle()
+                    
+                    let course = Course(context: self.managedObjectContext)
+                    course.name = self.addCourseVM.name
+                    course.code = self.addCourseVM.code
+
+                    if let credits = Int(self.addCourseVM.credits) {
+                        course.credits = NSNumber(integerLiteral: credits)
+                    }
+
+                    course.location = self.addCourseVM.location
+                    course.time = self.addCourseVM.time
+                    
+                    do {
+                        try self.managedObjectContext.save()
+                        self.showAddCourse.toggle() // Dismisses this view upon success
+                        
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                     
                 }) {
                     // Button Layout
@@ -80,8 +98,9 @@ struct AddCourseView: View {
     }
 }
 
-//struct AddCourseView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddCourseView()
-//    }
-//}
+struct AddCourseView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        AddCourseView(addCourseVM: AddCourseViewModel(), managedObjectContext: .init(\.managedObjectContext), showAddCourse: Binding.constant(true))
+    }
+}

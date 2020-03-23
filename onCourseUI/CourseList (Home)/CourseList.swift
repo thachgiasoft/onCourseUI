@@ -15,6 +15,7 @@ struct CourseList: View {
     // Core Data Property Wrappers
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: Course.retrieveCourses()) var courses: FetchedResults<Course>
+    //    @FetchRequest(entity: Course.entity(), sortDescriptors: []) var courses: FetchedResults<Course>
     
     
     /// Turns true if CoreData is empty or if user taps add Course Button
@@ -42,21 +43,20 @@ struct CourseList: View {
             List {
                 
                 ForEach(courses) { course in
-                    
                     CoursePreviewRow(name: course.name ?? "",
                                      code: course.code ?? "",
                                      credits: 0)
-                    
                 }
-                .navigationBarTitle(Text("Courses"), displayMode: .automatic)
-                .navigationBarItems(trailing: addCourseButton)
-                .sheet(isPresented: $showAddCourse) {
-                    NavigationView {
-                        AddCourseView(showAddCourse: self.$showAddCourse)
+            }
+            .navigationBarTitle(Text("Courses"), displayMode: .automatic)
+            .navigationBarItems(trailing: addCourseButton)
+            .sheet(isPresented: $showAddCourse) {
+                NavigationView {
+                    AddCourseView(showAddCourse: self.$showAddCourse)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
                         .navigationBarTitle("Add Course")
-                    }
-                    
                 }
+                
             }
             
             
@@ -67,7 +67,7 @@ struct CourseList: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //
-//        CourseList(managedObjectContext: <#T##Environment<NSManagedObjectContext>#>, courses: <#T##FetchRequest<Course>#>, showAddCourse: <#T##Bool#>)
+//        CourseList(managedObjectContext: .init(\.managedObjectContext), courses: <#T##FetchRequest<Course>#>, showAddCourse: <#T##Bool#>)
 //
 //    }
 //}
