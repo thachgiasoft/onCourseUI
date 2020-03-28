@@ -10,24 +10,23 @@ import SwiftUI
 import CoreData
 
 struct CoursePreviewRow: View {
-    var name:String
-    var code: String
-    var credits: Int
+    
+    var viewModel: CourseViewModel
     
     var body: some View {
         VStack {
             
             HStack {
-                Text(name)
+                Text(viewModel.name)
                     .font(Font.system(size: 20, weight: .semibold, design: .default))
 //                    .padding(.bottom)
                 Spacer()
             }
             
             HStack {
-                Text(code)
+                Text(viewModel.code)
                 Spacer()
-                Text("Credits: \(String(credits))")
+                Text(viewModel.credits)
             }
             
             
@@ -35,14 +34,13 @@ struct CoursePreviewRow: View {
     }
 }
 
-struct CoursePreviewRow_Previews: PreviewProvider {
-
-    static var previews: some View {
-
-        Group {
-            CoursePreviewRow(name: "Intro to Biology", code: "BIO 1001", credits: 3)
-            CoursePreviewRow(name: "Intermediate Programming", code: "CSE 1001", credits: 3)
-        }.previewLayout(.sizeThatFits)
-
-    }
-}
+//struct CoursePreviewRow_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//
+//        Group {
+//
+//        }.previewLayout(.sizeThatFits)
+//
+//    }
+//}

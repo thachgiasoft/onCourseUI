@@ -18,6 +18,11 @@ public class Course: NSManagedObject, Identifiable {
     @NSManaged public var name: String?
     @NSManaged public var time: String?
     
+    /// Returns the course credits as an integer.
+    public var creditsInt: Int {
+        return self.credits?.intValue ?? 0
+    }
+    
 }
 
 extension Course {

@@ -10,41 +10,6 @@ import SwiftUI
 import CoreData
 
 
-class CourseDetailViewModel: ObservableObject {
-    
-    @Published public var detailTitle: DetailType!
-    
-    @Published var name: String!
-    @Published var code: String!
-    @Published var credits: String!
-    @Published var location: String!
-    @Published var time: String!
-    
-    
-    enum DetailType: String {
-        case Name = "Name"
-        case Code = "Code"
-        case Credits = "Credit Hours"
-        case Location = "Location"
-        case Time = "Time"
-    }
-    
-    init(course: Course) {
-        self.name = course.name
-        self.code = course.code
-        
-        if let credits = course.credits {
-            self.credits = String(Int(truncating:credits))
-        } else {
-            self.credits = "N/A"
-        }
-        
-        self.location = course.location
-        self.time = course.time
-        
-    }
-}
-
 
 
 struct CourseDetailView: View {
@@ -67,7 +32,7 @@ struct CourseDetailView: View {
                 
                 CourseDetailRow(
                     DetailType: detailType.Credits.rawValue,
-                    value: viewModel.credits)
+                    value: "\(viewModel.credits)")
                 
             }
             .listStyle(GroupedListStyle())

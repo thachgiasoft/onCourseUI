@@ -15,8 +15,6 @@ struct CourseList: View {
     // Core Data Property Wrappers
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: Course.retrieveCourses()) var courses: FetchedResults<Course>
-    //    @FetchRequest(entity: Course.entity(), sortDescriptors: []) var courses: FetchedResults<Course>
-    
     
     /// Turns true if CoreData is empty or if user taps add Course Button
     @State var showAddCourse: Bool = false
@@ -41,14 +39,11 @@ struct CourseList: View {
             
             // Courses exist and should be shown
             List {
-                
                 ForEach(courses) { course in
                     
                     NavigationLink(destination: CourseDetailView(viewModel: CourseDetailViewModel(course: course))) {
                         
-                        CoursePreviewRow(name: course.name ?? "",
-                        code: course.code ?? "",
-                        credits: 0)
+                        CoursePreviewRow(viewModel: .init(course: course))
                     }
                 }
             }
