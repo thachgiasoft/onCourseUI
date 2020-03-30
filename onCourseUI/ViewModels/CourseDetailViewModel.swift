@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class CourseDetailViewModel: ObservableObject {
@@ -40,6 +41,17 @@ class CourseDetailViewModel: ObservableObject {
     
     init(course: Course) {
         self.course = course
+    }
+    
+    func removeCourse() {
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            moc.delete(self.course)
+            try moc.save()
+        } catch {
+            print("Could not delete")
+        }
     }
     
     

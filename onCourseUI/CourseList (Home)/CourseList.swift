@@ -57,8 +57,6 @@ struct CourseList: View {
                 }
                 
             }
-            
-            
         }
     }
 }

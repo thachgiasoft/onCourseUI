@@ -20,8 +20,12 @@ struct CourseDetailView: View {
     var body: some View {
         // TODO: Handle Forced Unwraps
         
+        
+        
+        ZStack(alignment: .center) {
+            
             List {
-             
+                
                 CourseDetailRow(
                     DetailType: detailType.Code.rawValue,
                     value: viewModel.code)
@@ -34,10 +38,27 @@ struct CourseDetailView: View {
                     DetailType: detailType.Credits.rawValue,
                     value: "\(viewModel.credits)")
                 
+                CourseDetailRow(
+                    DetailType: detailType.Time.rawValue,
+                    value: viewModel.time)
+                
             }
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(viewModel.name)
+            
+            
+            Button(action: {
+                self.viewModel.removeCourse()
+            }) {
+                Text("Remove this Course")
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .offset(x: 0, y: -20)
+        }
     }
 }
 
