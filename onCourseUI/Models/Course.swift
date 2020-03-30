@@ -13,6 +13,7 @@ import CoreData
 
 public class Course: NSManagedObject, Identifiable {
     @NSManaged public var code: String?
+    @NSManaged public var section: NSNumber?
     @NSManaged public var credits: NSNumber?
     @NSManaged public var location: String?
     @NSManaged public var name: String?

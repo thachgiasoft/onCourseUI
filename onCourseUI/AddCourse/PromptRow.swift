@@ -12,6 +12,7 @@ struct PromptRow: View {
     var title: String
     var placeholder: String
     var text: Binding<String>
+    var type: UIKeyboardType = .default
     
     
     var body: some View {
@@ -22,9 +23,8 @@ struct PromptRow: View {
                 .padding(.leading)
             TextField(placeholder, text: text)
                 .padding(.bottom)
+                .keyboardType(type)
         }
-        
-        
     }
 }
 
@@ -33,7 +33,7 @@ struct PromptRow_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        PromptRow(title: "Course Name", placeholder: "Enter Course Name Here", text: .constant(""))
+        PromptRow(title: "Course Name", placeholder: "Enter Course Name Here", text: .constant(""), type: .default)
             .previewLayout(.sizeThatFits)
     }
 }

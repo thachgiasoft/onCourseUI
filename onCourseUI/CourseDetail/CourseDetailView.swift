@@ -16,6 +16,8 @@ struct CourseDetailView: View {
     
     var viewModel: CourseDetailViewModel
     typealias detailType = CourseDetailViewModel.DetailType
+    @Environment(\.presentationMode) var presentationMode
+    @State var showDeleteAlert: Bool = false
     
     var body: some View {
         // TODO: Handle Forced Unwraps
@@ -45,11 +47,20 @@ struct CourseDetailView: View {
             }
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
-            .navigationBarTitle(viewModel.name)
+            .alert(isPresented: $showDeleteAlert) {
+                
+                Alert(title: Text("Are You Sure You Want to Remove \(self.viewModel.name)?"),
+                      message: Text("You will not be able to undo this action."),
+                      primaryButton: .cancel(),
+                      secondaryButton: .destructive(Text("Delete"), action: {
+                        self.viewModel.removeCourse()
+                        self.presentationMode.wrappedValue.dismiss()
+                      }))
+            }
             
             
             Button(action: {
-                self.viewModel.removeCourse()
+                self.showDeleteAlert.toggle()
             }) {
                 Text("Remove this Course")
                     .padding()

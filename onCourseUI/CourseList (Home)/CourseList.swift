@@ -41,7 +41,7 @@ struct CourseList: View {
             List {
                 ForEach(courses) { course in
                     
-                    NavigationLink(destination: CourseDetailView(viewModel: CourseDetailViewModel(course: course))) {
+                    NavigationLink(destination: CourseDetailView(viewModel: CourseDetailViewModel(course: course)).navigationBarTitle(course.name ?? "Name N/A")) {
                         
                         CoursePreviewRow(viewModel: .init(course: course))
                     }
