@@ -19,7 +19,6 @@ struct CoursePreviewRow: View {
             HStack {
                 Text(viewModel.name)
                     .font(Font.system(size: 20, weight: .semibold, design: .default))
-//                    .padding(.bottom)
                 Spacer()
             }
             

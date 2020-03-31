@@ -17,6 +17,7 @@ struct CourseDetailView: View {
     var viewModel: CourseDetailViewModel
     typealias detailType = CourseDetailViewModel.DetailType
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var courseListViewModel: CourseListViewModel
     @State var showDeleteAlert: Bool = false
     
     var body: some View {
@@ -54,6 +55,7 @@ struct CourseDetailView: View {
                       primaryButton: .cancel(),
                       secondaryButton: .destructive(Text("Delete"), action: {
                         self.viewModel.removeCourse()
+                        self.courseListViewModel.fetchCourses()
                         self.presentationMode.wrappedValue.dismiss()
                       }))
             }

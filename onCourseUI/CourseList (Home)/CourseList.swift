@@ -12,18 +12,13 @@ import Foundation
 
 struct CourseList: View {
     
-    // Core Data Property Wrappers
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: Course.retrieveCourses()) var courses: FetchedResults<Course>
-    
-    /// Turns true if CoreData is empty or if user taps add Course Button
-    @State var showAddCourse: Bool = false
+    @EnvironmentObject var viewModel: CourseListViewModel
     
     
     /// Toggles showAddCourse State variable
     var addCourseButton: some View {
         Button(action: {
-            self.showAddCourse.toggle()
+            self.viewModel.toggleShowAddCourse()
         }) {
             Image(systemName: "plus.circle.fill")
                 .imageScale(.large)
@@ -39,7 +34,7 @@ struct CourseList: View {
             
             // Courses exist and should be shown
             List {
-                ForEach(courses) { course in
+                ForEach(self.viewModel.courses) { course in
                     
                     NavigationLink(destination: CourseDetailView(viewModel: CourseDetailViewModel(course: course)).navigationBarTitle(course.name ?? "Name N/A")) {
                         
@@ -49,10 +44,10 @@ struct CourseList: View {
             }
             .navigationBarTitle(Text("Courses"), displayMode: .automatic)
             .navigationBarItems(trailing: addCourseButton)
-            .sheet(isPresented: $showAddCourse) {
+            .sheet(isPresented: self.$viewModel.showAddCourse) {
                 NavigationView {
-                    AddCourseView(showAddCourse: self.$showAddCourse)
-                        .environment(\.managedObjectContext, self.managedObjectContext)
+                    AddCourseView()
+                        .environmentObject(self.viewModel)
                         .navigationBarTitle("Add Course")
                 }
                 
