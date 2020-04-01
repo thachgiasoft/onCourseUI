@@ -14,11 +14,12 @@ import CoreData
 
 struct CourseDetailView: View {
     
-    var viewModel: CourseDetailViewModel
-    typealias detailType = CourseDetailViewModel.DetailType
+   @EnvironmentObject var viewModel: CourseDetailViewModel
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var courseListViewModel: CourseListViewModel
-    @State var showDeleteAlert: Bool = false
+    @EnvironmentObject var courseListViewModel: CourseListViewModel // Needed to fetch courses.
+    
+    
+    typealias detailType = CourseDetailViewModel.DetailType
     
     var body: some View {
         // TODO: Handle Forced Unwraps
@@ -48,7 +49,7 @@ struct CourseDetailView: View {
             }
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
-            .alert(isPresented: $showDeleteAlert) {
+            .alert(isPresented: $viewModel.showDeleteAlert) {
                 
                 Alert(title: Text("Are You Sure You Want to Remove \(self.viewModel.name)?"),
                       message: Text("You will not be able to undo this action."),
@@ -62,7 +63,7 @@ struct CourseDetailView: View {
             
             
             Button(action: {
-                self.showDeleteAlert.toggle()
+                self.viewModel.toggleShowDeleteAlert()
             }) {
                 Text("Remove this Course")
                     .padding()
@@ -72,6 +73,7 @@ struct CourseDetailView: View {
             }
             .offset(x: 0, y: -20)
         }
+        .navigationBarTitle(viewModel.name)
     }
 }
 

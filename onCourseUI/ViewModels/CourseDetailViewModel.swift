@@ -31,6 +31,11 @@ class CourseDetailViewModel: ObservableObject {
         return course.time ?? "N/A"
     }
     
+    @Published var showDeleteAlert: Bool = false
+    func toggleShowDeleteAlert() {
+        self.showDeleteAlert.toggle()
+    }
+    
     enum DetailType: String {
         case Name = "Name"
         case Code = "Code"

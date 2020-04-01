@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 import CoreData
 
 // Make Sure the Datamodel file has the class definition set to manual/none.
@@ -35,6 +36,33 @@ extension Course {
         request.sortDescriptors = [sortDescriptor]
         
         return request
+        
+    }
+    
+    static func addCourseToCD(name: String, code: String, section: String, credits: String, location: String, time: String ) {
+        
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let course = Course(context: moc)
+        
+        course.name = name
+        course.code = code
+        
+        if let section = Int(section) {
+            course.section = NSNumber(integerLiteral: section)
+        }
+
+        if let credits = Int(credits) {
+            course.credits = NSNumber(integerLiteral: credits)
+        }
+
+        course.location = location
+        course.time = time
+        
+        do {
+            try moc.save()
+        } catch {
+            print(error.localizedDescription)
+        }
         
     }
 }

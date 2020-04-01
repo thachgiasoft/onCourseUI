@@ -37,29 +37,8 @@ class AddCourseViewModel: ObservableObject {
         case time = "ex. M W F 9:00am-8:00am"
     }
     
-    public func addCourseToCD() {
-        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let course = Course(context: moc)
-        
-        course.name = self.name
-        course.code = self.code
-        
-        if let section = Int(self.section) {
-            course.section = NSNumber(integerLiteral: section)
-        }
-
-        if let credits = Int(self.credits) {
-            course.credits = NSNumber(integerLiteral: credits)
-        }
-
-        course.location = self.location
-        course.time = self.time
-        
-        do {
-            try moc.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+    public func addCourse() {
+        Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, time: self.location)
     }
     
 }

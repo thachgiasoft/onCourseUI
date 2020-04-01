@@ -13,13 +13,12 @@ import CoreData
 struct AddCourseView: View {
     
     @ObservedObject var viewModel = AddCourseViewModel()
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     @EnvironmentObject var courseListViewModel: CourseListViewModel
     
     var AddCourseButton: some View {
         Button(action: {
             // Do stuff
-            self.viewModel.addCourseToCD()
+            self.viewModel.addCourse()
             self.courseListViewModel.toggleShowAddCourse()
             self.courseListViewModel.fetchCourses()
         }) {
@@ -47,7 +46,7 @@ struct AddCourseView: View {
                     .keyboardType(.numberPad)
             }
             
-            PromptRow(title: AddCourseViewModel.Titles.credits.rawValue, placeholder: AddCourseViewModel.Placeholders.credits.rawValue, text: $viewModel.credits)
+            PromptRow(title: AddCourseViewModel.Titles.credits.rawValue, placeholder: AddCourseViewModel.Placeholders.credits.rawValue, text: $viewModel.credits, type: .numberPad)
             
             PromptRow(title: AddCourseViewModel.Titles.location.rawValue, placeholder: AddCourseViewModel.Placeholders.location.rawValue, text: $viewModel.location)
             PromptRow(title: AddCourseViewModel.Titles.time.rawValue, placeholder: AddCourseViewModel.Placeholders.time.rawValue, text: $viewModel.time)
