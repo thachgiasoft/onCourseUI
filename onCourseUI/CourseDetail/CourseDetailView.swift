@@ -14,18 +14,29 @@ import CoreData
 
 struct CourseDetailView: View {
     
-   @EnvironmentObject var viewModel: CourseDetailViewModel
+    // MARK: - Properties
+    @EnvironmentObject var viewModel: CourseDetailViewModel
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.editMode) var editable
     @EnvironmentObject var courseListViewModel: CourseListViewModel // Needed to fetch courses.
-    
-    
     typealias detailType = CourseDetailViewModel.DetailType
     
+    
+    // MARK: - Buttons
+    var RemoveButton: some View {
+        Button(action: {
+            self.viewModel.toggleShowDeleteAlert()
+        }) {
+            Text("Remove this Course")
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
+    }
+    
+    // MARK: - Body
     var body: some View {
-        // TODO: Handle Forced Unwraps
-        
-        
-        
         ZStack(alignment: .center) {
             
             List {
@@ -60,20 +71,12 @@ struct CourseDetailView: View {
                         self.presentationMode.wrappedValue.dismiss()
                       }))
             }
+            RemoveButton
+                .offset(x: 0, y: -20)
             
-            
-            Button(action: {
-                self.viewModel.toggleShowDeleteAlert()
-            }) {
-                Text("Remove this Course")
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .offset(x: 0, y: -20)
         }
-        .navigationBarTitle(viewModel.name)
+        .navigationBarTitle(Text(viewModel.name))
+        .navigationBarItems(trailing: EditButton())
     }
 }
 

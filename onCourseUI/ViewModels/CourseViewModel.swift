@@ -18,9 +18,14 @@ class CourseViewModel: ObservableObject, Identifiable {
     var name: String {
         return course.name ?? "Name Unavailable"
     }
-    
+    /// Displays the code AND section.
     var code: String {
-        return course.code ?? "N/A"
+        if let code = course.code {
+            if let section = course.section {
+                return "\(code) - \(section.intValue)"
+            }
+        }
+        return "N/A"
     }
     
     var credits: String {

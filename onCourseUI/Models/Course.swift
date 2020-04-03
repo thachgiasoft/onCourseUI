@@ -24,7 +24,6 @@ public class Course: NSManagedObject, Identifiable {
     public var creditsInt: Int {
         return self.credits?.intValue ?? 0
     }
-    
 }
 
 extension Course {
