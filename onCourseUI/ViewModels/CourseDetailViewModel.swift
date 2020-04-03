@@ -28,7 +28,14 @@ class CourseDetailViewModel: ObservableObject {
         return course.location ?? "N/A"
     }
     var time: String {
-        return course.time ?? "N/A"
+        
+        if let t = course.time {
+            return DateFormatter().string(from: t)
+        } else {
+            print("Error displaying Time in CourseDetailViewModel. Displaying Current Date to prevent crash.")
+            return DateFormatter().string(from: Date())
+        }
+        
     }
     
     @Published var showDeleteAlert: Bool = false

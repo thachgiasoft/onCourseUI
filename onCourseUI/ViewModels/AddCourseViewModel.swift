@@ -17,7 +17,7 @@ class AddCourseViewModel: ObservableObject {
     @Published public var section: String = ""
     @Published  public var credits: String = ""
     @Published public var location: String = ""
-    @Published public var time: String = ""
+    @Published public var time: Date = Date()
     
     enum Titles: String {
         case name = "Name"
@@ -25,7 +25,8 @@ class AddCourseViewModel: ObservableObject {
         case section = "Sec."
         case credits = "Credits Hours"
         case location = "Location"
-        case time = "Times"
+        case startTime = "Starts at"
+        case endTime = "Ends at"
     }
     
     enum Placeholders: String {
@@ -38,7 +39,7 @@ class AddCourseViewModel: ObservableObject {
     }
     
     public func addCourse() {
-        Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, time: self.location)
+        Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, time: self.time)
     }
     
 }

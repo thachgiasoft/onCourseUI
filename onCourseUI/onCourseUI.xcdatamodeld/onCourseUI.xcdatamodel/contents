@@ -6,7 +6,7 @@
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="section" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>

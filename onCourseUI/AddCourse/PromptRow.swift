@@ -20,9 +20,8 @@ struct PromptRow: View {
         HStack(alignment: .lastTextBaseline) {
             Text("\(title): ")
                 .fontWeight(.semibold)
-                .padding(.leading)
             TextField(placeholder, text: text)
-                .padding(.bottom)
+                .padding(.bottom, 8)
                 .keyboardType(type)
         }
     }
