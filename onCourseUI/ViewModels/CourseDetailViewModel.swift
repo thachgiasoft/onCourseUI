@@ -27,14 +27,20 @@ class CourseDetailViewModel: ObservableObject {
     var location: String {
         return course.location ?? "N/A"
     }
+    /// This is the time that the class starts
     var time: String {
-        
-        if let t = course.time {
-            return DateFormatter().string(from: t)
-        } else {
-            print("Error displaying Time in CourseDetailViewModel. Displaying Current Date to prevent crash.")
-            return DateFormatter().string(from: Date())
+        guard let startTime = course.start_time else {
+            return "N/A"
         }
+        guard let endTime = course.end_time else {
+            return "N/A"
+        }
+        
+        let formatter = DateFormatter()
+        let start = formatter.string(from: startTime)
+        let end = formatter.string(from: endTime)
+        return "\(start) to \(end)"
+        
         
     }
     

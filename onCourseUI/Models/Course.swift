@@ -18,7 +18,8 @@ public class Course: NSManagedObject, Identifiable {
     @NSManaged public var credits: NSNumber?
     @NSManaged public var location: String?
     @NSManaged public var name: String?
-    @NSManaged public var time: Date?
+    @NSManaged public var start_time: Date?
+    @NSManaged public var end_time: Date?
     
     /// Returns the course credits as an integer.
     public var creditsInt: Int {
@@ -38,7 +39,7 @@ extension Course {
         
     }
     
-    static func addCourseToCD(name: String, code: String, section: String, credits: String, location: String, time: Date ) {
+    static func addCourseToCD(name: String, code: String, section: String, credits: String, location: String, startTime: Date, endTime: Date ) {
         
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let course = Course(context: moc)
@@ -55,7 +56,8 @@ extension Course {
         }
 
         course.location = location
-        course.time = time
+        course.start_time = startTime
+        course.end_time = endTime
         
         do {
             try moc.save()

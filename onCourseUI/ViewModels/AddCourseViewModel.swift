@@ -15,9 +15,10 @@ class AddCourseViewModel: ObservableObject {
     @Published public var name: String = ""
     @Published public var code: String = ""
     @Published public var section: String = ""
-    @Published  public var credits: String = ""
+    @Published public var credits: String = ""
     @Published public var location: String = ""
-    @Published public var time: Date = Date()
+    @Published public var startTime: Date = Date()
+    @Published public var endTime: Date = Date()
     
     enum Titles: String {
         case name = "Name"
@@ -39,7 +40,7 @@ class AddCourseViewModel: ObservableObject {
     }
     
     public func addCourse() {
-        Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, time: self.time)
+        Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, startTime: self.startTime, endTime: self.endTime)
     }
     
 }

@@ -6,6 +6,9 @@
 //  Copyright © 2020 Nikhil Menon. All rights reserved.
 //
 
+
+// Sauce for forms: https://programmingwithswift.com/swiftui-form-beginners-guide/
+
 import SwiftUI
 import CoreData
 
@@ -32,75 +35,37 @@ struct AddCourseView: View {
         }
     }
     
-    //    var body: some View {
-    //
-    //        ScrollView(.vertical, showsIndicators: true) {
-    //
-    //            VStack(alignment: .leading, spacing: nil) {
-    //
-    //                PromptRow(title: AddCourseViewModel.Titles.name.rawValue, placeholder: AddCourseViewModel.Placeholders.name.rawValue, text: self.$viewModel.name)
-    //                    .padding(.top)
-    //                    .padding(.trailing)
-    //
-    //                HStack(alignment: .firstTextBaseline, spacing: 0) {
-    //
-    //                    PromptRow(title: AddCourseViewModel.Titles.code.rawValue, placeholder: AddCourseViewModel.Placeholders.code.rawValue, text: $viewModel.code)
-    //                    Text(" - ")
-    //                    TextField(AddCourseViewModel.Placeholders.section.rawValue, text: $viewModel.section)
-    //                        .keyboardType(.numberPad)
-    //                }
-    //
-    //                PromptRow(title: AddCourseViewModel.Titles.credits.rawValue, placeholder: AddCourseViewModel.Placeholders.credits.rawValue, text: $viewModel.credits, type: .numberPad)
-    //
-    //                PromptRow(title: AddCourseViewModel.Titles.location.rawValue, placeholder: AddCourseViewModel.Placeholders.location.rawValue, text: $viewModel.location)
-    //
-    //                Text("\(AddCourseViewModel.Titles.time.rawValue): ")
-    //                .fontWeight(.semibold)
-    //                .padding(.leading)
-    //                Form {
-    //                    DatePicker("Time", selection: self.$viewModel.time, displayedComponents: .hourAndMinute)
-    //                    .padding(.top)
-    //                    .padding(.bottom)
-    //                }
-    //            }
-    //
-    //            AddCourseButton.fixedSize()
-    //                .frame(width: 0, height: 0, alignment: .center)
-    //
-    //        }
-    //    }
-    
     var body: some View {
-        Form {
-            
-            
-            Section {
-                PromptRow(title: AddCourseViewModel.Titles.name.rawValue, placeholder: AddCourseViewModel.Placeholders.name.rawValue, text: self.$viewModel.name)
+            Form {
                 
-                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                Section {
+                    PromptRow(title: AddCourseViewModel.Titles.name.rawValue, placeholder: AddCourseViewModel.Placeholders.name.rawValue, text: self.$viewModel.name)
                     
-                    PromptRow(title: AddCourseViewModel.Titles.code.rawValue, placeholder: AddCourseViewModel.Placeholders.code.rawValue, text: $viewModel.code)
-                    Text(" - ")
-                    TextField(AddCourseViewModel.Placeholders.section.rawValue, text: $viewModel.section)
-                        .keyboardType(.numberPad)
+                    HStack(alignment: .firstTextBaseline, spacing: 0) {
+                        
+                        PromptRow(title: AddCourseViewModel.Titles.code.rawValue, placeholder: AddCourseViewModel.Placeholders.code.rawValue, text: $viewModel.code)
+                        Text(" - ")
+                        TextField(AddCourseViewModel.Placeholders.section.rawValue, text: $viewModel.section)
+                            .keyboardType(.numberPad)
+                    }
+                    
+                    PromptRow(title: AddCourseViewModel.Titles.credits.rawValue, placeholder: AddCourseViewModel.Placeholders.credits.rawValue, text: $viewModel.credits, type: .numberPad)
+                    
+                    PromptRow(title: AddCourseViewModel.Titles.location.rawValue, placeholder: AddCourseViewModel.Placeholders.location.rawValue, text: $viewModel.location)
                 }
                 
-                PromptRow(title: AddCourseViewModel.Titles.credits.rawValue, placeholder: AddCourseViewModel.Placeholders.credits.rawValue, text: $viewModel.credits, type: .numberPad)
-                
-                PromptRow(title: AddCourseViewModel.Titles.location.rawValue, placeholder: AddCourseViewModel.Placeholders.location.rawValue, text: $viewModel.location)
-            }
-            
-            Section {
-                DatePicker(selection: self.$viewModel.time, displayedComponents: .hourAndMinute) {
-                    Text("\(AddCourseViewModel.Titles.startTime.rawValue): ")
-                        .fontWeight(.semibold)
+                Section {
+                    DatePicker(selection: self.$viewModel.startTime, displayedComponents: .hourAndMinute) {
+                        Text("\(AddCourseViewModel.Titles.startTime.rawValue): ")
+                            .fontWeight(.semibold)
+                    }
+                    DatePicker(selection: self.$viewModel.endTime, displayedComponents: .hourAndMinute) {
+                        Text("\(AddCourseViewModel.Titles.endTime.rawValue): ")
+                            .fontWeight(.semibold)
+                    }
                 }
-                DatePicker(selection: self.$viewModel.time, displayedComponents: .hourAndMinute) {
-                    Text("\(AddCourseViewModel.Titles.endTime.rawValue): ")
-                        .fontWeight(.semibold)
-                }
+                AddCourseButton
             }
-        }
     }
     
     
