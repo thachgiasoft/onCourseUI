@@ -121,14 +121,11 @@
 		EA00A5DB24072B1300F344C2 /* onCourseUI */ = {
 			isa = PBXGroup;
 			children = (
-				EAFD63FB242FC53400A24BE9 /* ViewModels */,
 				EA00A5DC24072B1300F344C2 /* AppDelegate.swift */,
 				EA00A5DE24072B1300F344C2 /* SceneDelegate.swift */,
 				EA00A61524072CF800F344C2 /* Models */,
-				EAA224442423020B00B944B6 /* AddCourse */,
-				EA00A61024072C0700F344C2 /* CourseList (Home) */,
-				EABAD59D24073A940016F249 /* CourseDetail */,
-				EA00A5EA24072B1400F344C2 /* LaunchScreen.storyboard */,
+				EA98D5D0245A43210038BDD7 /* Views */,
+				EAFD63FB242FC53400A24BE9 /* ViewModels */,
 				EA00A5ED24072B1400F344C2 /* Info.plist */,
 				EA00A5E024072B1300F344C2 /* onCourseUI.xcdatamodeld */,
 				EA00A5E524072B1400F344C2 /* Assets.xcassets */,
@@ -178,6 +175,17 @@
 				EAC7F2DA2422ABE200B16FBA /* Course.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EA98D5D0245A43210038BDD7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAA224442423020B00B944B6 /* AddCourse */,
+				EA00A61024072C0700F344C2 /* CourseList (Home) */,
+				EABAD59D24073A940016F249 /* CourseDetail */,
+				EA00A5EA24072B1400F344C2 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EAA224442423020B00B944B6 /* AddCourse */ = {

@@ -20,6 +20,8 @@ class AddCourseViewModel: ObservableObject {
     @Published public var startTime: Date = Date()
     @Published public var endTime: Date = Date()
     
+    @Published public var AddCourseButtonIsHidden: Bool = false
+    
     enum Titles: String {
         case name = "Name"
         case code = "Code"
@@ -41,6 +43,10 @@ class AddCourseViewModel: ObservableObject {
     
     public func addCourse() {
         Course.addCourseToCD(name: self.name, code: self.code, section: self.section, credits: self.credits, location: self.location, startTime: self.startTime, endTime: self.endTime)
+    }
+    
+    public func toggleAddCourseButtonHiddenState() {
+        AddCourseButtonIsHidden.toggle()
     }
     
 }
