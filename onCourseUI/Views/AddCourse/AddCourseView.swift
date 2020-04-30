@@ -16,7 +16,9 @@ import CoreData
 struct AddCourseView: View {
     
     @ObservedObject var viewModel = AddCourseViewModel()
-    @EnvironmentObject var courseListViewModel: CourseListViewModel
+    @EnvironmentObject var courseListViewModel: CourseListViewModel // Needed to toggle the "showAddCourse" value
+    
+    // MARK: - Button Views
     
     var AddCourseButton: some View {
         Button(action: {
@@ -26,14 +28,24 @@ struct AddCourseView: View {
             self.courseListViewModel.fetchCourses()
         }) {
             // Button Layout
-            Text("Add Course")
-                .padding()
-                .background(Color.green)
-                .foregroundColor(Color.white)
+            Text("Add")
+                .foregroundColor(.blue)
                 .font(.headline)
-                .cornerRadius(10)
         }
     }
+    
+    var CancelButton: some View {
+        Button(action: {
+            self.courseListViewModel.toggleShowAddCourse()
+        }) {
+            Image(systemName: "x.circle.fill")
+                .imageScale(.large)
+                .accessibility(label: Text("Return to Course List"))
+                .foregroundColor(.secondary)
+        }
+    }
+    
+    // MARK: - Body
     
     var body: some View {
         
@@ -68,7 +80,7 @@ struct AddCourseView: View {
                 }
             }
         }
-        .overlay(AddCourseButton, alignment: .init(horizontal: .center, vertical: .bottom))
+        .navigationBarItems(leading: CancelButton, trailing: AddCourseButton)
         
     }
     
